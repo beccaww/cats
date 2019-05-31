@@ -299,16 +299,12 @@ describe('/api/user', function () {
               'username'
             );
             expect(res.body.username).to.equal(username);
-            expect(res.body.firstName).to.equal(firstName);
-            expect(res.body.lastName).to.equal(lastName);
             return User.findOne({
               username
             });
           })
           .then(user => {
             expect(user).to.not.be.null;
-            expect(user.firstName).to.equal(firstName);
-            expect(user.lastName).to.equal(lastName);
             return user.validatePassword(password);
           })
           .then(passwordIsCorrect => {
