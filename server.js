@@ -35,7 +35,7 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
-app.use('/api/upload/', uploadRouter);
+app.use('/upload/', uploadRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
