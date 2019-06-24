@@ -5,37 +5,37 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 
 const { app, runServer, closeServer } = require('../server');
+const { TEST_DATABASE_URL } = require('../config');
 
 const expect = chai.expect;
 
 chai.use(chaiHttp);
 
 
-// before(function () {
-//     return runServer(TEST_DATABASE_URL);
-//   });
-
-//   after(function () {
-//     return closeServer();
-//   });
-
-//should test if uploads a new image
-//should test POST
-//should have status 201
 describe('/api/images', function () {
+    
+
+  before(function () {
+    return runServer(TEST_DATABASE_URL);
+  });
+
+  after(function () {
+    return closeServer();
+  });
+
+
   describe('POST', function () {
-    it('Should upload a new image', function (done) {
+    it('Should upload a new image', function () {
       return chai
         .request(app)
         .post('/api/images')
         .attach('imageField', fs.readFileSync(`${__dirname}/../images/uploads/images/photo.png`), 'photo')
         .then(res => {
           expect(res).to.have.status(201);
-          done();
         })
         .catch(e => {
+          console.error('errror', e);
           expect(false).to.be.true;
-          done(e);
         })
     });
   });
