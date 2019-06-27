@@ -7,7 +7,7 @@ const passport = require('passport');
 
 
 const { router: usersRouter } = require('./users');
-const { router: uploadRouter } = require('./upload');
+const { router: uploadRouter } = require('./images');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
 mongoose.Promise = global.Promise;
@@ -35,7 +35,7 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
-app.use('/upload/', uploadRouter);
+app.use('/api/images/', uploadRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
