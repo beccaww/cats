@@ -35,9 +35,9 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
-app.use('/api/images/', uploadRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
+app.use('/api/images/', jwtAuth, uploadRouter);
 
 // A protected endpoint which needs a valid JWT to access it
 app.get('/api/protected', jwtAuth, (req, res) => {
