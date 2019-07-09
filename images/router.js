@@ -29,5 +29,19 @@ router.post('/', upload.single('imageField'), (req, res) => {
     }
 });
 
+router.get("/image.png", (req, res) => {
+    res.sendFile(path.join(__dirname, "./uploads/image.png"));
+  });
+
+// router.get('/', (req, res) => {
+//     Image.findByUserId(req.user._id).then()
+//     // return a json list
+//     // [ { _id: asdlkfj }, { _id: alskdjfa }, ....]
+// });
+
+// router.get('/:id', (req, res) => {
+//     Image.findById(req.params.id).then(record => res.send(record.data));
+// });
+
 
 module.exports = router ; 

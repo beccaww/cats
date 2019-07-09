@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
+const path = require('path');
 
 
 const { router: usersRouter } = require('./users');
@@ -33,9 +34,12 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
+app.use('/images/uploads/images', express.static(path.join(__dirname, 'images'))); 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 app.use('/api/images/', uploadRouter);
+
+app.use('*', (req, res) => res.sendFile(path.join(__dirname, 'images', 'uploads')));
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
