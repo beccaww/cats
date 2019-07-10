@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use('/images/uploads/images', express.static(path.join(__dirname, 'images'))); 
+// app.use('/images/uploads/images', express.static(path.join(__dirname, 'images'))); 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 app.use('/api/images/', uploadRouter);

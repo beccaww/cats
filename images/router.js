@@ -29,9 +29,9 @@ router.post('/', upload.single('imageField'), (req, res) => {
     }
 });
 
-router.get("/image.png", (req, res) => {
-    res.sendFile(path.join(__dirname, "./uploads/image.png"));
-  });
+// router.get("/photo.png", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./uploads/photo.png"));
+//   });
 
 // router.get('/', (req, res) => {
 //     Image.findByUserId(req.user._id).then()
