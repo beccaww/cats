@@ -29,12 +29,9 @@ router.post('/', upload.single('imageField'), (req, res) => {
     }
 });
 
-// router.get("/photo.png", (req, res) => {
-//     res.sendFile(path.join(__dirname, "./uploads/photo.png"));
-//   });
 
 router.get('/', (req, res) => {
-    Image.findByUserId(req.user._id).then(res => {res.json(data)})
+    Image.findByUserId(req.user._id).then(data => res.json(data))
     // return a json list
     // [ { _id: asdlkfj }, { _id: alskdjfa }, ....]
 });
