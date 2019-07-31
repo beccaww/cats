@@ -1,13 +1,17 @@
 'use strict';
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const multer = require('multer');
 const upload = multer({dest: __dirname + '/uploads/images', storage: multer.memoryStorage() });
 const Image = require('./models');
 
+
 const router = express.Router(); 
 
+const jsonParser = bodyParser.json();
 //app.use(express.static('public'));
+// router.use(bodyParser()); 
 
 router.post('/', upload.single('imageField'), (req, res) => {
     if(req.file) {
@@ -30,7 +34,7 @@ router.post('/', upload.single('imageField'), (req, res) => {
 });
 
 
-router.get('/', (req, res) => {
+router.get('/', jsonParser, (req, res) => {
     Image.findByUserId(req.user._id).then(data => res.json(data))
     // return a json list
     // [ { _id: asdlkfj }, { _id: alskdjfa }, ....]
