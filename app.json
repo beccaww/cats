@@ -1,0 +1,22 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "mongodb+srv://bob:95,dIm@cluster0-vsfx4.mongodb.net/test?retryWrites=true&w=majority"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "app.json",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
