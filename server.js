@@ -59,8 +59,10 @@ let server;
 
 function runServer(databaseUrl, port = PORT) {
 
+  const databaseUrl = 'mongodb+srv://bob:95dIm5@cluster0-vsfx4.mongodb.net/'; 
+
   return new Promise((resolve, reject) => {
-    mongoose.connect(databaseUrl, err => {
+    mongoose.connect(databaseUrl, {dbName: 'Cats'}, err => {
       if (err) {
         return reject(err);
       }
